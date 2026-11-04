@@ -8,4 +8,21 @@
 
 const http = require("http");
 
+const PORT = 3000;
+
 // write your code here
+const server = http.createServer((req, res) => {
+  if (req.url === '/hello') {
+    if (req.method === 'GET') {
+      res.end("Hello from GET");
+    } else if (req.method === 'POST') {
+      res.end("Hello from POST");
+    } else {
+      res.end("Not supported");
+    }
+  } else {
+    res.end("Not supported");
+  }
+});
+
+server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

@@ -11,3 +11,13 @@
 const http = require("http");
 
 // write your code here
+const server = http.createServer((req, res) => {
+    if( req.method === 'POST' && req.headers['content-type'] === 'application/json') {
+        res.end("JSON accepted");
+    } else {
+        res.end("Unsupported request");
+    }
+}
+);
+const PORT = 3000;
+server.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
